@@ -9,7 +9,7 @@ while true
  do
   for HOST in `cat ./hosts.txt | egrep -v "^\s*(#|$)"` 
     do
-    echo -e -n "Checking Host : \e[35m$HOST\e[39m"
+    echo -e -n "Checking Host: \e[35m$HOST\e[39m"
      sleep $checkinvental
      if ping -c $packages $HOST &> /dev/null
       then
@@ -20,7 +20,7 @@ while true
       then
       echo -e -n " \e[32mUP\e[39m"
       else
-        echo -e "Checking Host : \e[35m$HOST\e[39m \e[31mDOWN\e[39m"
+        echo -e "Checking Host: \e[35m$HOST\e[39m \e[31mDOWN\e[39m"
         date=`date +%d-%m-%Y_%H:%M:%S`
         printf "Host : $HOST\nState : DOWN\nTime : $date" | telegram-send --stdin
         telegram-send ""
