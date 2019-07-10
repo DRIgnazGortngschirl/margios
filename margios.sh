@@ -7,7 +7,7 @@ recheckpackages=3
 
 while true
  do
-  for HOST in `cat ~/hosts.txt | egrep -v "^\s*(#|$)"` 
+  for HOST in `cat ./hosts.txt | egrep -v "^\s*(#|$)"` 
     do
     echo -e -n "Checking Host : \e[35m$HOST\e[39m"
      sleep $checkinvental
