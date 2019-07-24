@@ -1,9 +1,11 @@
 #!/bin/bash
-HOST=0 # IP or Domain of the Host
-packages=1 # DO NOT TOUCH
+HOST=0 # Create HOST variable
+packages=1
+recheckpackages=3
+
 checkinterval=10
 recheckinterval=3
-recheckpackages=3
+
 
 while true
  do
@@ -26,7 +28,7 @@ while true
         telegram-send ""
         DOWN=1
         while [ "$DOWN" -eq 1 ]; do
-          if ping -c 1 $HOST &> /dev/null
+          if ping -c $recheckpackages $HOST &> /dev/null
           then
             DOWN=0
             date=`date +%d-%m-%Y_%H:%M:%S`
