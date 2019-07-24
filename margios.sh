@@ -1,8 +1,8 @@
 #!/bin/bash
 HOST=0 # IP or Domain of the Host
 packages=1 # DO NOT TOUCH
-checkinvental=10
-recheckinvental=3
+checkinterval=10
+recheckinterval=3
 recheckpackages=3
 
 while true
@@ -10,7 +10,7 @@ while true
   for HOST in `cat ./hosts.txt | egrep -v "^\s*(#|$)"` 
     do
     echo -e -n "Checking Host: \e[35m$HOST\e[39m"
-     sleep $checkinvental
+     sleep $checkinterval
      if ping -c $packages $HOST &> /dev/null
       then
       echo -e " \e[32mUP\e[39m"
@@ -33,7 +33,7 @@ while true
             echo -e "Host \e[35m$HOST\e[39m \e[32mUP\e[39m"
             printf "Host : $HOST\nState : UP\nTime : $date" | telegram-send --stdin
           else
-            sleep $checkinvental
+            sleep $checkinterval
             DOWN=1
             echo -e "Host \e[35m$HOST\e[39m \e[31mDOWN\e[39m"
           fi
