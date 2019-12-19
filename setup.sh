@@ -7,7 +7,7 @@ echo "Standart Hosts to check has been set"
 echo Enter user for systemd
 read USER
 echo "[i] : Searching for installation path ... This can take a few moments"
-INSTALLATIONPATH=`find / -name "*margios" 2>/dev/null`
+INSTALLATIONPATH=$(find / -name "*margios" 2>/dev/null)$
 echo "Installation path : $installpath"
 echo "[i] : Found installation path"
 
