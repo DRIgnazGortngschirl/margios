@@ -7,8 +7,8 @@ echo "Standart Hosts to check has been set"
 echo Enter user for systemd
 read USER
 echo "[i] : Searching for installation path ... This can take a few moments"
-INSTALLATIONPATH=$(find / -name "*margios" 2>/dev/null)$
-echo "Installation path : $installpath"
+INSTALLATIONPATH=$(find / -name "*margios" 2>/dev/null)
+echo "Installation path : $INSTALLATIONPATH"
 echo "[i] : Found installation path"
 
 # Phase 2 Seting up Systemd Service
@@ -20,7 +20,7 @@ echo "" >> /etc/systemd/system/margios.service
 echo "[Service]" >> /etc/systemd/system/margios.service
 echo "Type=simple" >> /etc/systemd/system/margios.service
 echo "User=$USER" >> /etc/systemd/system/margios.service
-echo "ExecStart=$INSTALLATIONPATH" >> /etc/systemd/system/margios.service
+echo "ExecStart=/bin/bash $INSTALLATIONPATH" >> /etc/systemd/system/margios.service
 echo "" >> /etc/systemd/system/margios.service
 echo "[Install]" >> /etc/systemd/system/margios.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/margios.service
