@@ -2,11 +2,10 @@
 HOST=0 # Create HOST variable
 packages=1
 recheckpackages=3
-
 checkinterval=1
 
 while true; do
-    for HOST in $(egrep -v "^\s*(#|$)" hosts.tx); do
+    for HOST in $(egrep -v "^\s*(#|$)" hosts.txt); do
         echo -e -n "Checking Host: \e[35m$HOST\e[39m"
         sleep "$checkinterval"
         if ping -c "$packages" "$HOST" &>/dev/null; then
